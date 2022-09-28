@@ -1,17 +1,16 @@
 const express = require("express");
 const server = express();
 const { sanitize, content } = require("./templates.js");
-const mockData = require('./mockdata.js')
+const mockData = require("./mockdata.js");
+const { listMusic } = require("./model/music.js");
 
 const bodyParser = express.urlencoded();
 
-const postsArr = [...mockData]
-
+const postsArr = [...mockData];
 
 server.get("/", (req, res) => {
   res.send(content(postsArr));
 });
-
 
 server.post("/", bodyParser, (req, res) => {
   const username = req.body.username;
@@ -19,9 +18,9 @@ server.post("/", bodyParser, (req, res) => {
   const song = req.body.song;
   const genre = req.body.genre;
   const rating = req.body.rating;
-  postsArr.push({ username, artist, song, genre, rating }); 
+  postsArr.push({ username, artist, song, genre, rating });
 
-  res.redirect('/')
-})
+  res.redirect("/");
+});
 
-module.exports = server; 
+module.exports = server;
