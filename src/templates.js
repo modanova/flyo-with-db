@@ -1,9 +1,9 @@
 function sanitize(str) {
-    return str.replace(/</g, "&lt;");
+  return str.replace(/</g, "&lt;");
 }
 
 const content = (posts) => {
-    return/*html*/ `<!DOCTYPE html>
+  return /*html*/ `<!DOCTYPE html>
   <html lang="en">
     <head>
       <meta name="viewport" content="width=device-width">
@@ -39,23 +39,21 @@ const content = (posts) => {
             </footer>
       </body>
       </html>
-`
-}
+`;
+};
 function postItem(post) {
-    return `
+  return `
       <li>
         <p>${sanitize(post.username)}</p>
-        <p>—${sanitize(post.artist)}</p>
+        <p>${sanitize(post.artist)}</p>
         <p>${sanitize(post.song)}</p>
         <p>${sanitize(post.genre)}</p>
-        <p>${(post.rating)}</p>
+        <p>${post.rating}</p>
       </li>
     `;
 }
 
-
-
 module.exports = {
-    sanitize,
-    content,
+  sanitize,
+  content,
 };
