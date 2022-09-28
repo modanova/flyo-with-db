@@ -6,7 +6,11 @@
       "nodemon": "^2.0.20"
     },
     "scripts": {
-      "dev": "nodemon src/index.js",
-      "start": "node src/index.js"
+      "dev": "DB_FILE=db.sqlite nodemon src/database/db.js",
+      "start": "node src/index.js",
+
+      "seed-win": "SET DB_FILE=db.sqlite & node src/database/seed.js",
+      "seed-mac": "DB_FILE=db.sqlite node src/database/seed.js"
+
     }
   }
