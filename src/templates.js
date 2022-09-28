@@ -2,8 +2,8 @@ function sanitize(str) {
     return str.replace(/</g, "&lt;");
 }
 
-const content =
- /*html*/ `<!DOCTYPE html>
+const content = (posts) => {
+    return/*html*/ `<!DOCTYPE html>
   <html lang="en">
     <head>
       <meta name="viewport" content="width=device-width">
@@ -29,6 +29,10 @@ const content =
       <input type="range" name="rating" min="0" max="5">
       <button>Post</button>
       </form>
+      <h2>All posts</h2>
+      <ul>
+    ${posts.map(postItem).join("")}
+    </ul>
       </main>
       <footer>
               <p>@2022 Abby-Alex-Manoela-Suraj</p>
@@ -36,6 +40,20 @@ const content =
       </body>
       </html>
 `
+}
+function postItem(post) {
+    return `
+      <li>
+        <p>${sanitize(post.username)}</p>
+        <p>—${sanitize(post.artist)}</p>
+        <p>${sanitize(post.song)}</p>
+        <p>${sanitize(post.genre)}</p>
+        <p>${(post.rating)}</p>
+      </li>
+    `;
+}
+
+
 
 module.exports = {
     sanitize,

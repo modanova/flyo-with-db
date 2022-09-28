@@ -1,11 +1,15 @@
 const express = require("express");
 const server = express();
 const { sanitize, content } = require("./templates.js");
+const mockData = require('./mockData.js')
 
 const bodyParser = express.urlencoded();
 
+const postsArr = [...mockData]
+
+
 server.get("/", (req, res) => {
-  res.send(content);
+  res.send(content(postsArr));
 });
 
 
