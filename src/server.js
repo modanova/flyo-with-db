@@ -19,14 +19,9 @@ server.post("/", bodyParser, (req, res) => {
   const song = req.body.song;
   const genre = req.body.genre;
   const rating = req.body.rating;
-  console.log(username, artist, song, genre, rating)
+  postsArr.push({ username, artist, song, genre, rating }); 
 
   res.redirect('/')
 })
-
-// server.get('/', (request, response) => {
-//   response.send()
-// })
-
 
 module.exports = server; 
