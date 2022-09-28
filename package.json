@@ -8,7 +8,7 @@
   "scripts": {
     "dev-mac": "DB_FILE=db.sqlite nodemon src/index.js",
     "dev-win": "SET DB_FILE=db.sqlite & nodemon src/index.js",
-    "start": "SET DB_FILE=db.sqlite node -r ./src/database/seed.js & nodemon src/index.js",
+    "start": "DB_FILE=db.sqlite node -r /src/database/seed.js nodemon src/index.js",
     "seed-win": "SET DB_FILE=db.sqlite & node src/database/seed.js",
     "seed-mac": "DB_FILE=db.sqlite node src/database/seed.js"
   }
