@@ -14,7 +14,8 @@ const content = (posts, error = {}) => {
     <main>
     <form method="POST" action="/" class="submit-form">
       <label for="username">Username</label>
-      <input type="text" name="username">
+      <input type="text" name="username" value='${
+        posts.username ? posts.username : ''}'>
       ${validation(error.username)}
 
       <label for="artist">Artist</label>
