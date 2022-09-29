@@ -61,7 +61,7 @@ function addStars(rating) {
 
 function postItem(post) {
   return `
-      <li>
+      <li class="tile">
         <p>@${sanitize(post.username)}</p>
         <p>${capitalizeFirstLetter(sanitize(post.artist))}</p>
         <p>${capitalizeFirstLetter(sanitize(post.song))}</p>
