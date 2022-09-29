@@ -39,8 +39,11 @@ The two tables follow the schema as shown below
 
 ![image](https://user-images.githubusercontent.com/78558945/193077628-b7e4489c-8c2a-46a1-8547-8eb9942fc80e.png)
 
+Example database:
 
+![image](https://user-images.githubusercontent.com/78558945/193078912-c04de113-cd6e-437f-a480-4ab356d8a250.png)
 
+![image](https://user-images.githubusercontent.com/78558945/193079057-31f81d05-375e-43e7-920f-2603597333fd.png)
 
 ## Acceptance Criteria
 
