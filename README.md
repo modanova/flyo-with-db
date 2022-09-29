@@ -4,28 +4,54 @@ A music sharing app where you can share your favourite songs for your friends!
 
 Have a look and post at [music-app](https://music-list-fac.herokuapp.com/)
 
+## Setup
+
+Make sure you have Git and Node (v18) installed.
+
+1. Clone this repo and cd into the directory
+
+2. Run `npm install` to install all the dependencies
+
+3. Run `npm run dev` to start the server. Run `npm run dev-win` if using Windows.
+
+4. Run `npm run seed` to create the database. Run `npm run seed-win` if using Windows.
+
+This uses the nodemon library to auto-restart the server when you save changes.
 
 ## User stories
+
 ### Core
 
-- [ ] As a user, I want to: post a song that I like for anyone to see
-- [ ] As a user, I want to: see other people's favourite songs they posted about
+- [x] As a friendly user I want to post a song that I like for anyone to see
+- [x] As a curious user I want to see other people's favourite songs they posted about
 
 Stretch goal: 
-- [ ] As a user, I want to filter by user so I can see a collection of one person's favourite songs
-- [ ] As a curious user, I want to sort all posted songs by rating
+- [ ] As a selfish user, I want to filter by user so I can see a collection of one person's favourite songs
+- [ ] As an organised user, I want to sort all posted songs by rating
+
+## Schema
+
+Our database contains two tables.
+1. Users - contains the usernames of everyone who has posted their favourite song so far
+2. Music - a list of all songs posted
+
+The two tables follow the schema as shown below
+
+![image](https://user-images.githubusercontent.com/78558945/193077628-b7e4489c-8c2a-46a1-8547-8eb9942fc80e.png)
+
+
 
 
 ## Acceptance Criteria
 
-- [ ] A form for users to submit data
-- [ ] A page showing all the data
-- [ ] Semantic form elements with correctly associated labels
-- [ ] A SQLite database
-- [ ] A schema describing your database in your README
-- [ ] Tests for server routes and database access
+- [x] A form for users to submit data
+- [x] A page showing all the data
+- [x] Semantic form elements with correctly associated labels
+- [x] A SQLite database
+- [x] A schema describing your database in your README
+- [x] Tests for server routes and database access
 - [ ] Not process user input as SQL commands
-- [ ] Hidden environment variables (i.e. not on GitHub)
+- [x] Hidden environment variables (i.e. not on GitHub)
 
 ## Stretch criteria
 
