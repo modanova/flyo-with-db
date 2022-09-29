@@ -29,8 +29,14 @@ const get_user_id = db.prepare(/*sql*/ `
   WHERE username = ?
 `);
 
+
 function getUserId(username) {
-  return get_user_id.get(username);
+  let user_id = get_user_id.get(username);
+  if(user_id == null) {
+    addUsername();
+    user_id = get_user_id.get(username);
+  }
+  return user_id;
 }
 
  // check whether username exists
@@ -42,11 +48,6 @@ function getUserId(username) {
 
 //checkUsername
 //updateUserTable
-
-
-
-
-
 
 
 const insert_music = db.prepare(/*sql*/ `
@@ -66,4 +67,17 @@ function updateMusicList(song) {
   return insert_music.get(song);
 }
 
-module.exports = { listMusic, updateMusicList, getUserId };
+
+const add_username = db.prepare(/*sql*/`
+  INSERT INTO user (username)
+  VALUES (
+    $username
+  )
+  RETURNING username;
+`);
+
+function addUsername(username) {
+  return add_username.run(username);
+}
+
+module.exports = { listMusic, updateMusicList, getUserId, addUsername };
