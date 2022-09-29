@@ -10,6 +10,10 @@
     "dev": "DB_FILE=db.sqlite nodemon src/index.js",
     "dev-win": "SET DB_FILE=db.sqlite & nodemon src/index.js",
     "seed": "DB_FILE=db.sqlite node src/database/seed.js",
-    "seed-win": "SET DB_FILE=db.sqlite & node src/database/seed.js"
+    "seed-win": "SET DB_FILE=db.sqlite & node src/database/seed.js",
+    "test": "DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings --test",
+    "test:1": "DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings test/one.test.js",
+    "test:2": "DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings test/two.test.js",
+    "test:3": "DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings test/three.test.js"
   }
 }
