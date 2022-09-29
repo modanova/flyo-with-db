@@ -22,9 +22,8 @@ server.post("/", bodyParser, (req, res) => {
   // check whether username exists
   
   // Push the username into user table
-  addUsername({username});
   
-  let user_id = getUserId(username).id;
+  const user_id = addUsername(username);
   
   // Updates the music database with user input. Must use user_id because username doesn't feature on music table.
   updateMusicList({ genre, artist, song, rating, user_id });

@@ -29,26 +29,9 @@ const get_user_id = db.prepare(/*sql*/ `
   WHERE username = ?
 `);
 
-
 function getUserId(username) {
-  let user_id = get_user_id.get(username);
-  if(user_id == null) {
-    addUsername();
-    user_id = get_user_id.get(username);
-  }
-  return user_id;
-}
-
- // check whether username exists
-  // function checkUsername => return true / false
-  // if true =>getUserId//
-  // if false =>
-  // 1. updates username in user table
-  // 2. getUserId
-
-//checkUsername
-//updateUserTable
-
+  return get_user_id.get(username);
+};
 
 const insert_music = db.prepare(/*sql*/ `
 
@@ -68,6 +51,7 @@ function updateMusicList(song) {
 }
 
 
+
 const add_username = db.prepare(/*sql*/`
   INSERT INTO user (username)
   VALUES (
@@ -76,8 +60,21 @@ const add_username = db.prepare(/*sql*/`
   RETURNING username;
 `);
 
-function addUsername(username) {
-  return add_username.run(username);
+function updateUsers(username) {
+  return add_username.run({username});
 }
 
-module.exports = { listMusic, updateMusicList, getUserId, addUsername };
+function addUsername(username) {
+  let user_id = getUserId(username).id;
+  console.log(user_id);
+
+  if (!user_id){
+
+    updateUsers(username);
+    user_id = getUserId({username}).id;
+  }
+
+  return user_id;
+}
+
+module.exports = { listMusic, updateMusicList, addUsername };
