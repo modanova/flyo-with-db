@@ -2,7 +2,7 @@ function sanitize(str) {
   return str.replace(/</g, "&lt;");
 }
 
-const content = (posts) => {
+const content = (posts, error = {}) => {
   return /*html*/ `<!DOCTYPE html>
   <html lang="en">
     <head>
@@ -15,15 +15,19 @@ const content = (posts) => {
     <form method="POST" action="/" class="submit-form">
       <label for="username">Username</label>
       <input type="text" name="username">
+      ${validation(error.username)}
 
       <label for="artist">Artist</label>
       <input type="text" name="artist">
+      ${validation(error.artist)}
 
       <label for="song">Song</label>
       <input type="text" name="song">
+      ${validation(error.song)}
 
       <label for="genre">Genre</label>
       <input type="text" name="genre">
+      ${validation(error.genre)}
 
       <label for="rating">Rating</label>
       <input type="range" name="rating" min="0" max="5">
@@ -51,6 +55,14 @@ function postItem(post) {
         <p>${post.rating}</p>
       </li>
     `;
+}
+
+function validation(message) {
+  if (message) {
+    return `<span style="color: red">${message}</span>`;
+  } else {
+    return "";
+  }
 }
 
 module.exports = {

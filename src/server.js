@@ -6,9 +6,9 @@ const { listMusic, updateMusicList, getUserId, addUsername } = require("./model/
 const bodyParser = express.urlencoded();
 
 const postsArr = listMusic();
-
+const error = {};
 server.get("/", (req, res) => {
-  res.send(content(postsArr));
+  res.send(content(postsArr, error));
 });
 
 server.post("/", bodyParser, (req, res) => {
@@ -18,6 +18,18 @@ server.post("/", bodyParser, (req, res) => {
   const genre = req.body.genre;
   const rating = req.body.rating;
   // Adds user input into an array of objects
+  if (!username) {
+    error.username = "Please enter your username";
+  }
+  if (!artist) {
+    error.artist = "Please enter the artist' name";
+  }
+  if (!song) {
+    error.song = "Please enter a song";
+  }
+  if (!genre) {
+    error.genre = "Please enter the genre";
+  }
   postsArr.push({ genre, artist, song, rating, username });
   // check whether username exists
   
