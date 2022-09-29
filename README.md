@@ -2,7 +2,7 @@
 
 A music sharing app where you can share your favourite songs for your friends!
 
-Have a look and post at [music-app](https://music-database-fac.herokuapp.com/)
+Have a look and post at [music-app](https://music-list-fac.herokuapp.com/)
 
 
 ## User stories
