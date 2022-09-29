@@ -16,7 +16,7 @@ const content = (posts) => {
     <h1>My Music</h1>
     <form method="POST" action="/" class="submit-form">
       <label for="username">Username</label>
-      <input type="text" name="username">
+      <input type="text" name="username" maxLength="15">
 
       <label for="artist">Artist</label>
       <input type="text" name="artist">
@@ -48,7 +48,7 @@ function postItem(post) {
       <li class="tile">
         <p>${sanitize(post.username)}</p>
         <p>${sanitize(post.artist)}</p>
-        <p>${sanitize(post.song)}</p>
+        <p>'${sanitize(post.song)}'</p>
         <p>${sanitize(post.genre)}</p>
         <p>${post.rating}</p>
       </li>
