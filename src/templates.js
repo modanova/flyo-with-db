@@ -63,10 +63,11 @@ function postItem(post) {
   return `
       <li>
         <p>${sanitize(post.username)}</p>
-        <p>${sanitize(post.artist)}</p>
-        <p>${sanitize(post.song)}</p>
-        <p>${sanitize(post.genre)}</p>
+        <p>${capitalizeFirstLetter(sanitize(post.artist))}</p>
+        <p>${capitalizeFirstLetter(sanitize(post.song))}</p>
+        <p>${capitalizeFirstLetter(sanitize(post.genre))}</p>
         <p>${addStars(post.rating)}</p>
+
       </li>
     `;
 };
@@ -77,6 +78,10 @@ function validation(message) {
     return "";
   }
 };
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 module.exports = {
   sanitize,
