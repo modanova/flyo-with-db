@@ -2,7 +2,7 @@ function sanitize(str) {
   return str.replace(/</g, "&lt;");
 }
 
-const content = (posts) => {
+const content = (posts, error = {}) => {
   return /*html*/ `<!DOCTYPE html>
   <html lang="en">
     <head>
@@ -17,15 +17,18 @@ const content = (posts) => {
     <form method="POST" action="/" class="submit-form">
       <label for="username">Username</label>
       <input type="text" name="username" maxLength="15">
-
+      ${validation(error.username)}
       <label for="artist">Artist</label>
       <input type="text" name="artist">
+      ${validation(error.artist)}
 
       <label for="song">Song</label>
       <input type="text" name="song">
+      ${validation(error.song)}
 
       <label for="genre">Genre</label>
       <input type="text" name="genre">
+      ${validation(error.genre)}
 
       <label for="rating">Rating</label>
       <input type="range" name="rating" min="0" max="5">
@@ -43,16 +46,40 @@ const content = (posts) => {
       </html>
 `;
 };
+
+function addStars(rating) {
+  const star = `<span>✩</span>`;
+
+  let rating_in_stars = star;
+
+  while (rating > 1) {
+    rating_in_stars += star;
+    rating--;
+  }
+  return rating_in_stars;
+}
+
 function postItem(post) {
   return `
-      <li class="tile">
+      <li>
         <p>@${sanitize(post.username)}</p>
-        <p>${sanitize(post.artist)}</p>
-        <p>'${sanitize(post.song)}'</p>
-        <p>${sanitize(post.genre)}</p>
-        <p>${post.rating}</p>
+        <p>${capitalizeFirstLetter(sanitize(post.artist))}</p>
+        <p>${capitalizeFirstLetter(sanitize(post.song))}</p>
+        <p>${capitalizeFirstLetter(sanitize(post.genre))}</p>
+        <p>${addStars(post.rating)}</p>
       </li>
     `;
+}
+function validation(message) {
+  if (message) {
+    return `<span style="color: red">${message}</span>`;
+  } else {
+    return "";
+  }
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 module.exports = {

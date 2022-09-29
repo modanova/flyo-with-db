@@ -65,16 +65,15 @@ function updateUsers(username) {
 }
 
 function addUsername(username) {
-  let user_id = getUserId(username).id;
-  console.log(user_id);
+  let user_id = getUserId(username);
 
   if (!user_id){
 
     updateUsers(username);
-    user_id = getUserId({username}).id;
+    user_id = getUserId(username);
   }
 
-  return user_id;
+  return user_id.id;
 }
 
 module.exports = { listMusic, updateMusicList, addUsername };
