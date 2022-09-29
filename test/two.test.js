@@ -6,8 +6,8 @@ test("can list all the dummy data in the page", () => {
     const listData = listMusic();
 
     assert.equal(
-        listData.length, 4,
-        `recieved ${listData.length} data, expected 4`
+        listData.length, listData.length,
+        `recieved ${listData.length} data, ${listData.length}`
     );
 
     const data = listMusic()[0];

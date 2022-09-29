@@ -14,6 +14,8 @@
     "test": "DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings --test",
     "test:1": "DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings test/one.test.js",
     "test:2": "DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings test/two.test.js",
-    "test:3": "DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings test/three.test.js"
-  }
+    "test:3": "DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings test/three.test.js",
+    "test:4": "DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings test/four.test.js"
+
+    }
 }
