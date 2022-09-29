@@ -1,7 +1,7 @@
 const express = require("express");
 const server = express();
 const { sanitize, content } = require("./templates.js");
-const { listMusic, updateMusicList, getUserId, addUsername } = require("./model/music.js");
+const { listMusic, updateMusicList, addUsername, searchByUsername } = require("./model/music.js");
 
 const bodyParser = express.urlencoded();
 

@@ -35,9 +35,8 @@ const content = (posts, error = {}) => {
       <button>Post</button>
       </form>
       <h2>All posts</h2>
-      <ul>
-    ${posts.map(postItem).join("")}
-    </ul>
+      
+      <ul>${posts.map(postItem).join("")}</ul>
       </main>
       <footer>
               <p>@2022 Abby-Alex-Manoela-Suraj</p>
