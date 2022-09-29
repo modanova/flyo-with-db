@@ -36,8 +36,8 @@ const content = (posts, error = {}) => {
       </form>
 
       <form method="GET" action="/search">
-      <h3>or search by <input name="username" placeholder="username">
-      ${validation(error.username)}
+      <h3>or search by <input name="user" placeholder="username">
+      ${validation(error.user)}
       </h3>
       </form>
 

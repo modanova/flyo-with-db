@@ -61,12 +61,12 @@ server.post("/", bodyParser, (req, res) => {
 
 // Search by username
 server.post("/search", bodyParser, (req, res) => {
-  const username = req.body.username;
+  const username = req.body.user;
   const error = {};
   // if empty throw error
   
   if (!username) {
-    error.username = "Please enter your username";
+    error.user = "Please enter your username";
   };
 
   if (Object.keys(error).length > 0) {
@@ -91,11 +91,12 @@ server.get("/search?:username", (req, res) => {
   let postsByUsername = searchByUsername(username);
   
   if (postsByUsername == "User not found") {
-    error.username = "User doesn't exist";
+    error.user = "User doesn't exist";
   };
   
   if (Object.keys(error).length > 0) {
-    return res.redirect("/");
+      const body = content(postsArr, error);
+      return res.status(400).send(body);
   };
 
   res.send(content(postsByUsername, error));
