@@ -2,12 +2,9 @@ const express = require("express");
 const server = express();
 const staticHandler = express.static("public");
 const { sanitize, content } = require("./templates.js");
-const {
-  listMusic,
-  updateMusicList,
-  getUserId,
-  addUsername,
-} = require("./model/music.js");
+
+const { listMusic, updateMusicList, addUsername, searchByUsername } = require("./model/music.js");
+
 
 server.use(staticHandler);
 
