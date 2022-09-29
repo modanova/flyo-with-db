@@ -8,8 +8,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "DB_FILE=db.sqlite nodemon src/index.js",
+    "dev-win": "SET DB_FILE=db.sqlite & nodemon src/index.js",
     "seed": "DB_FILE=db.sqlite node src/database/seed.js",
-    "test": "DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings --test"
+    "seed-win": "SET DB_FILE=db.sqlite & node src/database/seed.js"
   }
 }
-
