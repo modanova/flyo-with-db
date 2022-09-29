@@ -49,7 +49,7 @@ const content = (posts, error = {}) => {
 function postItem(post) {
   return `
       <li>
-        <p>${capitalizeFirstLetter(sanitize(post.username))}</p>
+        <p>${sanitize(post.username)}</p>
         <p>${capitalizeFirstLetter(sanitize(post.artist))}</p>
         <p>${capitalizeFirstLetter(sanitize(post.song))}</p>
         <p>${capitalizeFirstLetter(sanitize(post.genre))}</p>
