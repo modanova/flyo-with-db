@@ -46,7 +46,7 @@ const content = (posts) => {
 function postItem(post) {
   return `
       <li class="tile">
-        <p>${sanitize(post.username)}</p>
+        <p>@${sanitize(post.username)}</p>
         <p>${sanitize(post.artist)}</p>
         <p>'${sanitize(post.song)}'</p>
         <p>${sanitize(post.genre)}</p>
