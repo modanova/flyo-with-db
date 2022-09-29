@@ -1,7 +1,12 @@
 const express = require("express");
 const server = express();
+const staticHandler = express.static("public");
 const { sanitize, content } = require("./templates.js");
+
 const { listMusic, updateMusicList, addUsername, searchByUsername } = require("./model/music.js");
+
+
+server.use(staticHandler);
 
 const bodyParser = express.urlencoded();
 
@@ -19,6 +24,7 @@ server.post("/", bodyParser, (req, res) => {
   const genre = req.body.genre;
   const rating = req.body.rating;
   // Adds user input into an array of objects
+
   if (!username) {
     error.username = "Please enter your username";
   }
