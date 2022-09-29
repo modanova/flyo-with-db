@@ -6,12 +6,13 @@ const { listMusic, updateMusicList, getUserId, addUsername } = require("./model/
 const bodyParser = express.urlencoded();
 
 const postsArr = listMusic();
-const error = {};
+
 server.get("/", (req, res) => {
-  res.send(content(postsArr, error));
+  res.send(content(postsArr));
 });
 
 server.post("/", bodyParser, (req, res) => {
+  const error = {};
   const username = req.body.username;
   const artist = req.body.artist;
   const song = req.body.song;
@@ -30,19 +31,24 @@ server.post("/", bodyParser, (req, res) => {
   if (!genre) {
     error.genre = "Please enter the genre";
   }
-  postsArr.push({ genre, artist, song, rating, username });
-  // check whether username exists
-  
-  // Push the username into user table
-  
-  const user_id = addUsername(username);
-  
-  // Updates the music database with user input. Must use user_id because username doesn't feature on music table.
-  updateMusicList({ genre, artist, song, rating, user_id });
+  if (Object.keys(error).length > 0) {
+    const body = content(postsArr, error);
+    return res.status(400).send(body);
 
-  console.log(listMusic());
+  } else {
+    postsArr.push({ genre, artist, song, rating, username });
+    // check whether username exists
 
-  res.redirect("/");
+    // Push the username into user table
+
+    const user_id = addUsername(username);
+
+    // Updates the music database with user input. Must use user_id because username doesn't feature on music table.
+    updateMusicList({ genre, artist, song, rating, user_id });
+
+    console.log(listMusic());
+    res.redirect("/");
+  }
 });
 
 module.exports = server;
