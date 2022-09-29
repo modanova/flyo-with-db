@@ -1,0 +1,59 @@
+:root {
+  --primary-colour: #000000;
+  --secondary-colour: #121212;
+  --box-colour: #2f2c37;
+  --text-colour: #ffffff;
+  --font: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+body {
+  background-color: var(--primary-colour);
+  color: var(--text-colour);
+  font-family: var(--font);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  max-width: 50vw;
+  margin: 0 auto;
+}
+
+label {
+  margin-bottom: 0.25rem;
+}
+
+input {
+  background-color: var(--secondary-colour);
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  outline-color: rgba(0, 0, 0, 0.2);
+}
+
+.grid-container {
+  background-color: var(--secondary-colour);
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  width: 80vw;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%/1, max(64px, 100%/3)), 1fr)
+  );
+  row-gap: 20px;
+  justify-items: center;
+  list-style: none;
+}
+
+.tile {
+  background-color: var(--box-colour);
+  border-radius: 20px;
+  width: 20vw;
+  text-align: center;
+}

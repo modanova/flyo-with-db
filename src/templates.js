@@ -8,10 +8,12 @@ const content = (posts) => {
     <head>
       <meta name="viewport" content="width=device-width">
         <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css" />
           <title>Music List</title>
     </head>
     <body>
     <main>
+    <h1>My Music</h1>
     <form method="POST" action="/" class="submit-form">
       <label for="username">Username</label>
       <input type="text" name="username">
@@ -30,7 +32,7 @@ const content = (posts) => {
       <button>Post</button>
       </form>
       <h2>All posts</h2>
-      <ul>
+      <ul class="grid-container">
     ${posts.map(postItem).join("")}
     </ul>
       </main>
@@ -43,7 +45,7 @@ const content = (posts) => {
 };
 function postItem(post) {
   return `
-      <li>
+      <li class="tile">
         <p>${sanitize(post.username)}</p>
         <p>${sanitize(post.artist)}</p>
         <p>${sanitize(post.song)}</p>
