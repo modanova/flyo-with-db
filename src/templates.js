@@ -36,7 +36,9 @@ const content = (posts, error = {}) => {
       </form>
 
       <form method="GET" action="/search">
-      <h3>or search by <input name="username" placeholder="username"></h3>
+      <h3>or search by <input name="username" placeholder="username">
+      ${validation(error.username)}
+      </h3>
       </form>
 
       <h2>All posts</h2>

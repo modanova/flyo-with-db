@@ -3,7 +3,7 @@ const server = express();
 const staticHandler = express.static("public");
 const { sanitize, content } = require("./templates.js");
 
-const { listMusic, updateMusicList, addUsername, searchByUsername } = require("./model/music.js");
+const { listMusic, updateMusicList, addUsername, searchByUsername, getUserId } = require("./model/music.js");
 
 
 server.use(staticHandler);
@@ -59,13 +59,23 @@ server.post("/", bodyParser, (req, res) => {
 });
 
 
-let postsByUsername = searchByUsername("Alex");
-// (postsByUsername);
-
-// TO DO 
+// Search by username
 server.post("/search", bodyParser, (req, res) => {
   const username = req.body.username;
-  response.redirect(`/search/?username=${username}`);
+  const error = {};
+  // if empty throw error
+  
+  if (!username) {
+    error.username = "Please enter your username";
+  };
+
+  if (Object.keys(error).length > 0) {
+    // const body = content(postsArr, error);
+    return res.status(400).send(body);
+  }
+  else {
+    res.redirect(`/search/?username=${username}`);
+  }
 });
 
 server.get("/search?:username", (req, res) => {
@@ -73,23 +83,20 @@ server.get("/search?:username", (req, res) => {
   const username = req.query.username;
 
   const error = {};
-  // if empty throw error
-  if (!username) {
-    error.username = "Please enter your username";
-  };
   
+  // if id doesn't exist redirect to main page
+
+
   // get an array of songs posted by this username
   let postsByUsername = searchByUsername(username);
-
-  //What does this do?!
-  // if (Object.keys(error).length > 0) {
-  //   const body = content(postsByUsername, error);
-  //   return res.status(400).send(body);
-  // } 
-
-  // else {
-  //   postsByUsername.push({ genre, artist, song, rating, username });
-  // }
+  
+  if (postsByUsername == "User not found") {
+    error.username = "User doesn't exist";
+  };
+  
+  if (Object.keys(error).length > 0) {
+    return res.redirect("/");
+  };
 
   res.send(content(postsByUsername, error));
 });
