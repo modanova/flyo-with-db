@@ -99,12 +99,12 @@ function searchByUsername(username) {
   // Get username id from user folder
   let user_id = getUserId(username);
   // If it doesn't exist return "not found"
-  if (!user_id) return "User not found";
+  if (!user_id) {return "User not found";}
+
   user_id = user_id.id;
 
   // If found, return music by this user;
   return musicByUsername(user_id);
  };
-
 
 module.exports = { listMusic, updateMusicList, addUsername, searchByUsername };

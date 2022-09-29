@@ -57,4 +57,30 @@ server.post("/", bodyParser, (req, res) => {
   }
 });
 
+server.get("/search", bodyParser, (req, res) => {
+  // get username from the query
+  const username = req.query.username;
+  const error = {};
+  // if empty throw error
+  if (!username) {
+    error.username = "Please enter your username";
+  };
+  
+  // get an array of songs posted by this username
+  let postsByUsername = searchByUsername();
+  console.log(postsByUsername);
+
+  //What does this do?!
+  // if (Object.keys(error).length > 0) {
+  //   const body = content(postsByUsername, error);
+  //   return res.status(400).send(body);
+  // } 
+
+  // else {
+  //   postsByUsername.push({ genre, artist, song, rating, username });
+  // }
+
+  res.redirect("/search");
+});
+
 module.exports = server;
