@@ -46,6 +46,19 @@ const content = (posts, error = {}) => {
       </html>
 `;
 };
+
+function addStars(rating) {
+  const star = `<span>✩</span>`;
+
+  let rating_in_stars = star;
+  
+  while (rating > 1) {
+    rating_in_stars += star;
+    rating--;
+  }
+  return rating_in_stars;
+}
+
 function postItem(post) {
   return `
       <li>
@@ -53,18 +66,18 @@ function postItem(post) {
         <p>${capitalizeFirstLetter(sanitize(post.artist))}</p>
         <p>${capitalizeFirstLetter(sanitize(post.song))}</p>
         <p>${capitalizeFirstLetter(sanitize(post.genre))}</p>
-        <p>${post.rating}</p>
+        <p>${addStars(post.rating)}</p>
+
       </li>
     `;
-}
-
+};
 function validation(message) {
   if (message) {
     return `<span style="color: red">${message}</span>`;
   } else {
     return "";
   }
-}
+};
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
