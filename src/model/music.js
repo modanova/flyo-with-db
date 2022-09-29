@@ -86,7 +86,7 @@ user.username
 FROM music
 JOIN user
 ON music.user_id = user.id
-WHERE user_id = ?
+WHERE music.user_id = ?
 `);
 
 function musicByUsername(id) {

@@ -52,14 +52,26 @@ server.post("/", bodyParser, (req, res) => {
     // Updates the music database with user input. Must use user_id because username doesn't feature on music table.
     updateMusicList({ genre, artist, song, rating, user_id });
 
-    console.log(listMusic());
+    //console.log(listMusic());
+
     res.redirect("/");
   }
 });
 
-server.get("/search", bodyParser, (req, res) => {
+
+let postsByUsername = searchByUsername("Alex");
+// (postsByUsername);
+
+// TO DO 
+server.post("/search", bodyParser, (req, res) => {
+  const username = req.body.username;
+  response.redirect(`/search/?username=${username}`);
+});
+
+server.get("/search?:username", (req, res) => {
   // get username from the query
   const username = req.query.username;
+
   const error = {};
   // if empty throw error
   if (!username) {
@@ -67,8 +79,7 @@ server.get("/search", bodyParser, (req, res) => {
   };
   
   // get an array of songs posted by this username
-  let postsByUsername = searchByUsername();
-  console.log(postsByUsername);
+  let postsByUsername = searchByUsername(username);
 
   //What does this do?!
   // if (Object.keys(error).length > 0) {
@@ -80,7 +91,7 @@ server.get("/search", bodyParser, (req, res) => {
   //   postsByUsername.push({ genre, artist, song, rating, username });
   // }
 
-  res.redirect("/search");
+  res.send(content(postsByUsername, error));
 });
 
 module.exports = server;
