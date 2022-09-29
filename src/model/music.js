@@ -31,23 +31,7 @@ const get_user_id = db.prepare(/*sql*/ `
 
 function getUserId(username) {
   return get_user_id.get(username);
-}
-
- // check whether username exists
-  // function checkUsername => return true / false
-  // if true =>getUserId//
-  // if false =>
-  // 1. updates username in user table
-  // 2. getUserId
-
-//checkUsername
-//updateUserTable
-
-
-
-
-
-
+};
 
 const insert_music = db.prepare(/*sql*/ `
 
@@ -66,4 +50,31 @@ function updateMusicList(song) {
   return insert_music.get(song);
 }
 
-module.exports = { listMusic, updateMusicList, getUserId };
+
+
+const add_username = db.prepare(/*sql*/`
+  INSERT INTO user (username)
+  VALUES (
+    $username
+  )
+  RETURNING username;
+`);
+
+function updateUsers(username) {
+  return add_username.run({username});
+}
+
+function addUsername(username) {
+  let user_id = getUserId(username).id;
+  console.log(user_id);
+
+  if (!user_id){
+
+    updateUsers(username);
+    user_id = getUserId({username}).id;
+  }
+
+  return user_id;
+}
+
+module.exports = { listMusic, updateMusicList, addUsername };
