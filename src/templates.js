@@ -9,29 +9,31 @@ const content = (posts, error = {}) => {
       <meta name="viewport" content="width=device-width">
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
           <title>Music List</title>
+          
     </head>
     <body>
     <main>
     <h1>My Music</h1>
     <form method="POST" action="/" class="submit-form">
       <label for="username">Username</label>
-      <input type="text" name="username" maxLength="15">
+      <input type="text" name="username" id="username" maxLength="15">
       ${validation(error.username)}
       <label for="artist">Artist</label>
-      <input type="text" name="artist">
+      <input type="text" name="artist" id="artist" maxLength="50">
       ${validation(error.artist)}
 
       <label for="song">Song</label>
-      <input type="text" name="song">
+      <input type="text" name="song" id="song" maxLength="50">
       ${validation(error.song)}
 
       <label for="genre">Genre</label>
-      <input type="text" name="genre">
+      <input type="text" name="genre" id="genre" maxLength="20">
       ${validation(error.genre)}
 
       <label for="rating">Rating</label>
-      <input type="range" name="rating" min="0" max="5">
+      <input type="range" name="rating" id="rating" min="0" max="5">
       <button>Post</button>
       </form>
       <h2>All posts</h2>
@@ -48,7 +50,7 @@ const content = (posts, error = {}) => {
 };
 
 function addStars(rating) {
-  const star = `<span>✩</span>`;
+  const star = `<span class="fa fa-star ratings"></span>`;
 
   let rating_in_stars = star;
 

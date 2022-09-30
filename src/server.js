@@ -52,7 +52,6 @@ server.post("/", bodyParser, (req, res) => {
     // Updates the music database with user input. Must use user_id because username doesn't feature on music table.
     updateMusicList({ genre, artist, song, rating, user_id });
 
-    console.log(listMusic());
     res.redirect("/");
   }
 });
