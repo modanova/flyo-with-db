@@ -84,6 +84,8 @@ button:hover {
   text-align: center;
   margin-top: 15px;
   margin-bottom: 15px;
+  word-wrap: break-word;
+  padding: 5px;
 }
 
 footer {
@@ -106,4 +108,8 @@ footer {
       minmax(min(100%/1, max(64px, 100%/2)), 1fr)
     );
   }
+}
+
+.ratings {
+  color: orange;
 }

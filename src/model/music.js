@@ -107,4 +107,4 @@ function searchByUsername(username) {
   return musicByUsername(user_id);
  };
 
-module.exports = { listMusic, updateMusicList, addUsername, searchByUsername, getUserId };
+module.exports = { listMusic, updateMusicList, addUsername, searchByUsername };
