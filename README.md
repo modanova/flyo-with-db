@@ -20,6 +20,11 @@ This uses the nodemon library to auto-restart the server when you save changes.
 
 ## Test
 
+Testing in windows:
+```js
+    SET DB_FILE=test.sqlite & node -r ./src/database/seed.js --no-warnings --test
+```
+
 Test All:
 ```js
 npm run test
