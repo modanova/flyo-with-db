@@ -36,10 +36,17 @@ const content = (posts, error = {}) => {
       <input type="range" name="rating" id="rating" min="0" max="5">
       <button>Post</button>
       </form>
+
+      <form method="GET" action="/search">
+      <h3>or search by <input name="user" placeholder="username">
+      ${validation(error.user)}
+      </h3>
+      </form>
+
       <h2>All posts</h2>
       <ul class="grid-container">
-    ${posts.map(postItem).join("")}
-    </ul>
+        ${posts.reverse().map(postItem).join("")}
+      </ul>
       </main>
       <footer>
               <p>@2022 Abby-Alex-Manoela-Suraj</p>

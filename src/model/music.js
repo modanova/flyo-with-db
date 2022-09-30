@@ -74,4 +74,37 @@ function addUsername(username) {
   return user_id.id;
 }
 
-module.exports = { listMusic, updateMusicList, addUsername, getUserId, updateUsers};
+// ========== Filter =========
+
+const music_by_username = db.prepare(/*sql*/ `
+SELECT
+music.genre,
+music.artist,
+music.song,
+music.rating,
+user.username
+FROM music
+JOIN user
+ON music.user_id = user.id
+WHERE music.user_id = ?
+`);
+
+function musicByUsername(id) {
+  //returns a list of songs by the username
+  // looks like this {genre: "pop", artist: "rihanna", song: "pon de replay", rating: 5, username: Manoela}
+  return music_by_username.all(id);
+};
+
+function searchByUsername(username) {
+  // Get username id from user folder
+  let user_id = getUserId(username);
+  // If it doesn't exist return "not found"
+  if (!user_id) {return "User not found";}
+
+  user_id = user_id.id;
+
+  // If found, return music by this user;
+  return musicByUsername(user_id);
+ };
+
+module.exports = { listMusic, updateMusicList, addUsername, searchByUsername };
