@@ -18,7 +18,7 @@ server.get("/", (req, res) => {
 
 server.post("/", bodyParser, (req, res) => {
   const error = {};
-  const username = req.body.username;
+  const username = req.body.username.toLowerCase();
   const artist = req.body.artist;
   const song = req.body.song;
   const genre = req.body.genre;
@@ -59,11 +59,11 @@ server.post("/", bodyParser, (req, res) => {
 
 // Search by username
 server.post("/search", bodyParser, (req, res) => {
-  const username = req.body.user;
+  const user = req.body.user.toLowerCase();
   const error = {};
   // if empty throw error
   
-  if (!username) {
+  if (!user) {
     error.user = "Please enter your username";
   };
 
@@ -72,13 +72,13 @@ server.post("/search", bodyParser, (req, res) => {
     return res.status(400).send(body);
   }
   else {
-    res.redirect(`/search/?username=${username}`);
+    res.redirect(`/search/?username=${user}`);
   }
 });
 
-server.get("/search?:username", (req, res) => {
+server.get("/search?:user", (req, res) => {
   // get username from the query
-  const username = req.query.username;
+  const user = req.query.user.toLowerCase();
 
   const error = {};
   
@@ -86,7 +86,7 @@ server.get("/search?:username", (req, res) => {
 
 
   // get an array of songs posted by this username
-  let postsByUsername = searchByUsername(username);
+  let postsByUsername = searchByUsername(user);
   
   if (postsByUsername == "User not found") {
     error.user = "User doesn't exist";

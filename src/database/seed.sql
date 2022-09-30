@@ -3,10 +3,10 @@ PRAGMA foreign_keys = OFF;
 BEGIN;
 
 INSERT INTO user VALUES 
-    (1, 'Alex'),
-    (2, 'Abby'),
-    (3, 'Manoela'),
-    (4, 'Suraj')
+    (1, 'alex'),
+    (2, 'abby'),
+    (3, 'manoela'),
+    (4, 'suraj')
 ON CONFLICT DO NOTHING;
 
 INSERT INTO music VALUES
