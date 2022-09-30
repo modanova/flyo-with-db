@@ -2,7 +2,7 @@ function sanitize(str) {
   return str.replace(/</g, "&lt;");
 }
 
-const content = (posts, error = {}) => {
+const content = (posts, error = {}, value = {}) => {
   return /*html*/ `<!DOCTYPE html>
   <html lang="en">
     <head>
@@ -18,22 +18,22 @@ const content = (posts, error = {}) => {
     <h1>My Music</h1>
     <form method="POST" action="/" class="submit-form">
       <label for="username">Username</label>
-      <input type="text" name="username" id="username" maxLength="15">
+      <input type="text" name="username" id="username" maxLength="15" value='${value.username ? value.username : ''}'>
       ${validation(error.username)}
       <label for="artist">Artist</label>
-      <input type="text" name="artist" id="artist" maxLength="50">
+      <input type="text" name="artist" id="artist" maxLength="50" value='${value.artist ? value.artist : ''}'>
       ${validation(error.artist)}
 
       <label for="song">Song</label>
-      <input type="text" name="song" id="song" maxLength="50">
+      <input type="text" name="song" id="song" maxLength="50" value='${value.song ? value.song : ''}'>
       ${validation(error.song)}
 
       <label for="genre">Genre</label>
-      <input type="text" name="genre" id="genre" maxLength="20">
+      <input type="text" name="genre" id="genre" maxLength="20" value='${value.genre ? value.genre : ''}'>
       ${validation(error.genre)}
 
       <label for="rating">Rating</label>
-      <input type="range" name="rating" id="rating" min="0" max="5">
+      <input type="range" name="rating" id="rating" min="0" max="5" >
       <button>Post</button>
       </form>
 

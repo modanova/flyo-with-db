@@ -38,7 +38,7 @@ server.post("/", bodyParser, (req, res) => {
     error.genre = "Please enter the genre";
   }
   if (Object.keys(error).length > 0) {
-    const body = content(postsArr, error);
+    const body = content(postsArr, error, req.body);
     return res.status(400).send(body);
 
   } else {
