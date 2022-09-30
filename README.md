@@ -18,6 +18,38 @@ Make sure you have Git and Node (v18) installed.
 
 This uses the nodemon library to auto-restart the server when you save changes.
 
+## Test
+
+Test All:
+```js
+npm run test
+    DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings --test
+```
+
+Test 1:
+```js
+npm run test:1
+    DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings test/one.test.js
+```
+
+Test 2:
+```js
+npm run test:2
+    DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings test/two.test.js
+```
+
+Test 3:
+```js
+npm run test:3
+    DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings test/three.test.js
+```
+
+Test 4:
+```js
+npm run test:4
+    DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings test/four.test.js
+```
+
 ## User stories
 
 ### Core
