@@ -87,7 +87,6 @@ server.get("/search?:user", (req, res) => {
 
   // get an array of songs posted by this username
   let postsByUsername = searchByUsername(user);
-  console.log(postsByUsername);
   
   if (postsByUsername == "User not found") {
     error.user = "User doesn't exist";
