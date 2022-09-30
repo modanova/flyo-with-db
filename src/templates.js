@@ -21,15 +21,15 @@ const content = (posts, error = {}) => {
       <input type="text" name="username" id="username" maxLength="15">
       ${validation(error.username)}
       <label for="artist">Artist</label>
-      <input type="text" name="artist" id="artist">
+      <input type="text" name="artist" id="artist" maxLength="50">
       ${validation(error.artist)}
 
       <label for="song">Song</label>
-      <input type="text" name="song" id="song">
+      <input type="text" name="song" id="song" maxLength="50">
       ${validation(error.song)}
 
       <label for="genre">Genre</label>
-      <input type="text" name="genre" id="genre">
+      <input type="text" name="genre" id="genre" maxLength="20">
       ${validation(error.genre)}
 
       <label for="rating">Rating</label>
