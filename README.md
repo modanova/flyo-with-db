@@ -74,7 +74,8 @@ Our database contains two tables.
 
 The two tables follow the schema as shown below
 
-![image](https://user-images.githubusercontent.com/78558945/193077628-b7e4489c-8c2a-46a1-8547-8eb9942fc80e.png)
+![Screenshot 2022-10-02 at 22 27 11](https://user-images.githubusercontent.com/88027905/193477012-c14b9834-05e5-4607-8fe8-d8202a725f7a.png)
+
 
 Example database:
 
@@ -97,5 +98,4 @@ Example database:
 
 - [ ] A way to view filtered/sorted data, instead of just all of it
     GitHub Actions CI setup to run your tests when you push
-![Screenshot_2022-09-27_at_16 45 49](https://user-images.githubusercontent.com/88027905/192761083-d29473af-0af7-4dcf-9035-ab5282ad05e2.png)
 
