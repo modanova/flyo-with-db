@@ -20,7 +20,9 @@ INSERT INTO music VALUES
     (3, 3, 'RnB', 'John Legend', 'All of me', 5),
 
     -- Suraj
-    (4, 4, 'Indie', 'Bon Iver', 'Stacks', 5)
+    (4, 4, 'Indie', 'Bon Iver', 'Stacks', 5),
+
+     (5, 5, 'Indie', 'Bon Iver', 'Holocene', 3)
 ON CONFLICT DO NOTHING;
 
 COMMIT;
