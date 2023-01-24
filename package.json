@@ -18,5 +18,8 @@
     "test:3": "DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings test/three.test.js",
     "test:4": "DB_FILE=test.sqlite node -r ./src/database/seed.js --no-warnings test/four.test.js"
 
-    }
+    },
+    "volta": {
+      "node": "18.12.1"
+   }
 }
