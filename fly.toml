@@ -1,6 +1,6 @@
-# fly.toml file generated for testing-abby on 2023-01-22T14:58:22Z
+# fly.toml file generated for flyo-database-manoela on 2023-02-17T17:24:36Z
 
-app = "testing-abby"
+app = "flyo-database-manoela"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
@@ -12,8 +12,8 @@ processes = []
   auto_rollback = true
 
 [mounts]
-   source = "data"
    destination = "/data"
+  source = "data"
 
 [[services]]
   http_checks = []
